@@ -31,7 +31,7 @@ paseo plugin ls paseo-usage-plugin
 paseo plugin update paseo-usage-plugin
 ```
 
-For a specific release, add `--ref v0.1.0` to the install command.
+For a specific release, add `--ref <release-tag>` to the install command. Use a tag from [Releases](https://github.com/yannelli/paseo-usage-plugin/releases).
 
 ## The numbers that matter
 

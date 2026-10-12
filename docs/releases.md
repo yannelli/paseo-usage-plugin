@@ -37,7 +37,7 @@ The separate **Checks** workflow validates Node 22 and 24 and renders the graphi
 ## Install a release
 
 ```sh
-paseo plugin install git:yannelli/paseo-usage-plugin --ref v0.1.0
+paseo plugin install git:yannelli/paseo-usage-plugin --ref v0.1.1
 ```
 
 An ordinary Git install follows the repository's default branch on update. Use a tag explicitly when a fixed release is desired.

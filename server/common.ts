@@ -1,13 +1,12 @@
 import { readFile } from "node:fs/promises";
 import { homedir } from "node:os";
 import { z } from "zod";
-import { version } from "../package.json";
 import { unavailable, type UsageReport, type UsageScope } from "@getpaseo/plugin/server/usage";
 
 export const storeInput = z.object({ path: z.string().min(1) }).strict();
 export type Environment = Record<string, string | undefined>;
 export type Fetcher = typeof fetch;
-export const PLUGIN_USER_AGENT = `paseo-usage-plugin/${version}`;
+export const PLUGIN_USER_AGENT = "paseo-usage-plugin";
 
 export function environment(scope: UsageScope, globalEnv: Environment): Environment {
   return scope.kind === "session" ? scope.env : globalEnv;

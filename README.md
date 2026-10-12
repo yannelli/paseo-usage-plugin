@@ -1,4 +1,4 @@
-![Paseo Usage: know what’s left. Kiro credits and Antigravity quotas, right inside Paseo.](docs/images/github-banner.png)
+![Kiro and Antigravity usage in Paseo: credit balances, usage limits, and reset times.](docs/images/github-banner.png)
 
 # Paseo Usage Plugin
 
@@ -8,9 +8,7 @@
 [![Paseo 0.11.2+](https://img.shields.io/badge/Paseo-0.11.2%2B-18191d)](https://paseo.sh)
 [![MIT license](https://img.shields.io/badge/license-MIT-18191d)](LICENSE)
 
-**Kiro credits. Antigravity quotas. One Usage view.**
-
-`paseo-usage-plugin` brings the account limits from **Kiro CLI (AWS)** and **Antigravity CLI (`agy`)** into Paseo's built-in Usage view and matching agent popovers. It uses the CLI accounts you already signed in with.
+`paseo-usage-plugin` shows **Kiro CLI (AWS) credit balances** and **Antigravity CLI (`agy`) usage limits** in Paseo's Usage view and agent popovers. Reports include remaining allowances and reset times, using your existing CLI logins.
 
 | Provider | What you see |
 | --- | --- |
@@ -40,17 +38,17 @@ paseo plugin install git:yannelli/paseo-usage-plugin
 
 For a fixed GitHub release, add `--ref <release-tag>`. Use a tag from [Releases](https://github.com/yannelli/paseo-usage-plugin/releases). The runtime plugin ID remains `paseo-usage-plugin` for either install source.
 
-## The numbers that matter
+## Usage reports
 
 ![Illustrated Kiro credit balance and Antigravity shared quota reports with sample data.](docs/images/quota-preview.png)
 
 *Graphics are illustrations with sample data, not product screenshots. The actual layout is provided by Paseo.*
 
-- **Account limits, where you work.** The same usage sources feed the host-wide Usage view and the corresponding agent's popover.
-- **The right account for each agent.** Session discovery follows the agent's launch environment. Stable account keys survive token rotation.
-- **Reset times from the provider.** Reported five-hour and weekly periods stay distinct. Unknown periods are not guessed from a countdown.
-- **Existing logins, read-only.** The plugin reads stored access tokens. It never refreshes them, changes login files, or starts an agent.
-- **Useful failure states.** Expired or rejected logins show a remedy. An account error does not prevent other accounts from reporting usage.
+- **Usage view and agent popovers.** Both show reports from the same usage sources.
+- **Account selection.** Each agent uses the CLI account selected by its launch environment. Account identities remain stable when tokens rotate.
+- **Reset periods.** Five-hour and weekly limits use the periods reported by the provider. The plugin does not infer an unknown period from its reset countdown.
+- **Credential access.** The plugin reads stored access tokens. It never refreshes them, changes login files, or starts an agent.
+- **Login errors.** Expired or rejected logins show how to sign in again. Other accounts continue reporting usage.
 
 ## Configuration
 

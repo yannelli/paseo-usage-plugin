@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Paseo Usage — illustrative quota preview</title>
+  <title>Kiro and Antigravity usage in Paseo</title>
   <style>
     @font-face{font-family:Geist;src:url('./fonts/geist.woff2') format('woff2');font-weight:100 900}
     @font-face{font-family:Geist Mono;src:url('./fonts/geist-mono.woff2') format('woff2');font-weight:100 900}
@@ -14,8 +14,8 @@
     .watermark{position:absolute;width:900px;height:900px;right:-270px;top:-80px;border:80px solid #ffffff03;border-radius:50%}
     header{position:absolute;left:64px;right:64px;top:42px;display:flex;align-items:center;justify-content:space-between}
     .brand{display:flex;align-items:center;gap:13px;font-size:23px;font-weight:640;letter-spacing:-.7px}.brand img{width:43px;height:43px}.edition{font:11px Geist Mono,monospace;color:var(--muted);letter-spacing:1.8px}
-    .copy{position:absolute;left:64px;top:170px;width:535px}.eyebrow{font:12px Geist Mono,monospace;letter-spacing:2px;color:#c5c5c9;margin-bottom:22px}
-    h1{font-size:94px;line-height:1.02;letter-spacing:-6px;font-weight:730;margin:0}h1 em{font-style:normal;color:var(--orange)}
+    .copy{position:absolute;left:64px;top:180px;width:535px}.eyebrow{font:12px Geist Mono,monospace;letter-spacing:2px;color:#c5c5c9;margin-bottom:22px}
+    h1{font-size:64px;line-height:1.08;letter-spacing:-2.8px;font-weight:730;margin:0}h1 em{font-style:normal;color:var(--orange)}
     .intro{font-size:23px;line-height:1.5;color:#bdbdc4;margin-top:29px;letter-spacing:-.45px;max-width:445px}
     .chips{display:flex;gap:10px;margin-top:27px}.chip{font-size:12px;border:1px solid #ffffff1b;padding:8px 11px;border-radius:5px;color:#d5d5db}.chip:before{content:'✓';color:#ff7254;margin-right:7px}
     .stack{position:absolute;right:64px;top:144px;width:485px}.card{color:var(--ink);background:#fdfcfb;border:1px solid #fff;border-radius:18px;padding:25px 28px;box-shadow:0 18px 65px #0005}
@@ -24,18 +24,17 @@
     .sample{font:10px Geist Mono,monospace;color:#aaaab1;text-align:right;margin:14px 5px;letter-spacing:.3px}.bottom{position:absolute;left:64px;right:64px;bottom:35px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid #ffffff15;padding-top:21px;font:11px Geist Mono,monospace;color:#9fa0a8}.repo{display:flex;align-items:center;gap:9px}.repo svg{height:16px;width:16px;fill:#d1d1d5}
     .preview{background:var(--paper);color:var(--ink);display:none;padding:48px 64px}.preview .eyebrow{color:#8b634f;margin-bottom:10px}.preview h2{font-size:47px;letter-spacing:-2.2px;font-weight:680;margin:0 0 9px}.preview .lead{font-size:17px;color:#77787f;margin:0}.panels{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:31px}.panel{background:#fff;border:1px solid #e6e3df;border-radius:14px;padding:27px 30px;height:404px;box-shadow:0 6px 12px #1a191c03}.panel h3{font-size:23px;letter-spacing:-.7px;margin:0}.panel .balance strong{font-size:49px}.panel .balance{margin-top:29px}.panel .legend{font-size:12px}.metrics{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #eee9e4;margin-top:23px;padding-top:19px;gap:10px}.metric label{font-size:12px;color:#7b7c84;display:block;margin-bottom:6px}.metric strong{font-size:24px;letter-spacing:-1px;font-weight:550}.metric small{font-size:13px;letter-spacing:0;color:#7b7c84}.reset{border-top:1px solid #eee9e4;margin-top:19px;padding-top:16px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#7b7c84}.reset b{font-weight:500;color:#33343a}.group{margin-top:20px}.group-label{font-size:12px;color:#777981;margin-bottom:13px}.group .quota-row{margin-top:12px}.group .quota-line{font-size:12px;margin-bottom:7px}.group .quota-line strong{font-size:15px}.group .track{height:6px}.group+.group{padding-top:16px;border-top:1px solid #eee9e4;margin-top:18px}.panel .status{font-size:10px}.preview .bottom{border-color:#ddd9d4;color:#77787f;bottom:32px}.preview .bottom span:first-child{color:#41424a}
     body[data-view=preview] .hero{display:none}body[data-view=preview] .preview{display:block}
-    body[data-view=social],body[data-view=social] .artboard{height:640px}body[data-view=social] .copy{top:151px}body[data-view=social] .stack{top:123px}body[data-view=social] h1{font-size:88px}body[data-view=social] .chips{display:none}body[data-view=social] .intro{margin-top:22px}body[data-view=social] .bottom{bottom:25px}
+    body[data-view=social],body[data-view=social] .artboard{height:640px}body[data-view=social] .copy{top:151px}body[data-view=social] .stack{top:123px}body[data-view=social] .chips{display:none}body[data-view=social] .intro{margin-top:22px}body[data-view=social] .bottom{bottom:25px}
   </style>
 </head>
 <body>
   <section class="artboard hero">
     <div class="grid"></div><div class="watermark"></div>
-    <header><div class="brand"><img src="../../assets/icon.svg" alt="Usage gauge">Paseo Usage</div><div class="edition">KIRO CLI + ANTIGRAVITY</div></header>
-    <div class="copy">
-      <div class="eyebrow">YOUR LIMITS. IN VIEW.</div>
-      <h1>Know what’s<br><em>left.</em></h1>
-      <p class="intro">Credits, quotas, and reset times.<br>Right inside Paseo.</p>
-      <div class="chips"><span class="chip">Existing CLI logins</span><span class="chip">Native Usage view</span></div>
+    <header><div class="brand"><img src="../../assets/icon.svg" alt="Usage gauge">Paseo Usage Plugin</div><div class="edition">CREDITS · LIMITS · RESET TIMES</div></header>
+    <div class="copy" data-bounds>
+      <h1>Kiro &amp;<br>Antigravity<br><em>usage in Paseo</em></h1>
+      <p class="intro">Kiro credit balances and Antigravity<br>usage limits, with reset times.</p>
+      <div class="chips"><span class="chip">Uses existing CLI logins</span><span class="chip">Shown in Usage</span></div>
     </div>
     <div class="stack">
       <div class="card" data-bounds>
@@ -53,9 +52,9 @@
     <footer class="bottom"><span class="repo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .8a11.2 11.2 0 0 0-3.5 21.8c.6.1.8-.2.8-.5v-2c-3.3.7-4-1.4-4-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.8.1-.8.1-.8 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.6 1.3 3.3 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.4-1.3-5.4-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.1 1.2a10.8 10.8 0 0 1 5.7 0C16.8 4.5 17.8 4.8 17.8 4.8c.6 1.6.2 2.8.1 3.1.8.9 1.2 1.9 1.2 3.2 0 4.5-2.8 5.5-5.5 5.8.4.4.8 1.1.8 2.2v3c0 .3.2.6.8.5A11.2 11.2 0 0 0 12 .8Z"/></svg>yannelli/paseo-usage-plugin</span><span>OPEN SOURCE · MIT</span></footer>
   </section>
   <section class="artboard preview">
-    <div class="eyebrow">TWO PROVIDERS. ONE PLACE.</div>
-    <h2>See the balance. Plan the next task.</h2>
-    <p class="lead">Account credits and shared model limits, alongside the reset times that matter.</p>
+    <div class="eyebrow">EXAMPLE USAGE REPORTS</div>
+    <h2>Kiro credits and Antigravity limits</h2>
+    <p class="lead">Kiro: used and remaining credits. Antigravity: five-hour and weekly usage limits.</p>
     <div class="panels">
       <article class="panel" data-bounds>
         <div class="card-title"><span class="provider kiro"><img src="../../assets/providers/kiro.svg" alt="Kiro logo"></span><div><h3>Kiro CLI</h3><div class="sub">AWS · KIRO PRO MAX</div></div><span class="status">AVAILABLE</span></div>

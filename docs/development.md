@@ -14,7 +14,7 @@ The server entry registers `kiro` and `antigravity` usage sources. Paseo owns re
 
 `npm run check` runs TypeScript and the Node test runner. Adapter tests use temporary SQLite/JSON stores and mocked HTTP responses. Release tests use temporary Git repositories and a local HTTP server. No test requires a real CLI login or GitHub token.
 
-Coverage includes quota precision, active/expired credit pools, unknown limits, protobuf defaults, stable quota IDs, session isolation, token rotation, unchanged credential files, malformed data, rejected credentials, HTTP fallback, version drift, and interrupted release recovery.
+Coverage includes quota precision, active/expired credit pools, unknown limits, protobuf defaults, stable quota IDs, session isolation, token rotation, unchanged credential files, malformed data, rejected credentials, HTTP fallback, version drift, interrupted release recovery, and npm publication retry checks.
 
 ```sh
 # Explicitly query real local accounts; prints quota reports, not tokens.
@@ -31,6 +31,8 @@ npm pack --dry-run
 ```
 
 The package includes the plugin manifest, server entry and adapters, icon, overview, README, documentation, and promotional PNGs. Tests, renderer sources, fonts, and development dependencies stay out of the installed package. Paseo provides the plugin SDK and Zod; Node provides SQLite and fetch.
+
+The npm package name is `@yannelli/paseo-usage-plugin`; the Paseo manifest ID is `paseo-usage-plugin`. The [release workflow](releases.md) packs the exact release tag and sends that same tarball to npm and GitHub. See [npm publishing](npm-publishing.md) for authentication and provenance.
 
 ## Graphics
 

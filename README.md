@@ -4,6 +4,7 @@
 
 [![Checks](https://github.com/yannelli/paseo-usage-plugin/actions/workflows/checks.yml/badge.svg)](https://github.com/yannelli/paseo-usage-plugin/actions/workflows/checks.yml)
 [![Release](https://img.shields.io/github/v/release/yannelli/paseo-usage-plugin?color=ff4a24&label=release)](https://github.com/yannelli/paseo-usage-plugin/releases)
+[![npm](https://img.shields.io/npm/v/@yannelli/paseo-usage-plugin?color=ff4a24)](https://www.npmjs.com/package/@yannelli/paseo-usage-plugin)
 [![Paseo 0.11.2+](https://img.shields.io/badge/Paseo-0.11.2%2B-18191d)](https://paseo.sh)
 [![MIT license](https://img.shields.io/badge/license-MIT-18191d)](LICENSE)
 
@@ -19,7 +20,7 @@
 ## Install
 
 ```sh
-paseo plugin install git:yannelli/paseo-usage-plugin
+paseo plugin install npm:@yannelli/paseo-usage-plugin
 ```
 
 Enable plugins in **Settings → Plugins**, then open **Usage**. Sign in to each CLI on the **daemon host**, where this plugin runs.
@@ -31,7 +32,13 @@ paseo plugin ls paseo-usage-plugin
 paseo plugin update paseo-usage-plugin
 ```
 
-For a specific release, add `--ref <release-tag>` to the install command. Use a tag from [Releases](https://github.com/yannelli/paseo-usage-plugin/releases).
+GitHub installation is also supported:
+
+```sh
+paseo plugin install git:yannelli/paseo-usage-plugin
+```
+
+For a fixed GitHub release, add `--ref <release-tag>`. Use a tag from [Releases](https://github.com/yannelli/paseo-usage-plugin/releases). The runtime plugin ID remains `paseo-usage-plugin` for either install source.
 
 ## The numbers that matter
 
@@ -76,10 +83,11 @@ paseo plugin install "$PWD"
 | --- | --- |
 | [Configuration](docs/configuration.md) | Credential stores, account isolation, request behavior, troubleshooting |
 | [Development](docs/development.md) | Validation, packaging, local testing, reproducible graphics |
-| [Releases](docs/releases.md) | Conventional Commits, automatic GitHub releases, versioning |
+| [Releases](docs/releases.md) | Conventional Commits, automatic npm and GitHub releases, versioning |
+| [npm publishing](docs/npm-publishing.md) | Trusted publishing, provenance, bootstrap, and recovery |
 
 ## Releases and license
 
-Checks run on Node 22 and 24. Qualifying pushes to `main` create a versioned GitHub release and attach an installable package. `fix:` makes a patch release, `feat:` makes a minor release, and a breaking change makes a major release. Documentation-only changes do not bump the version. [Release details →](docs/releases.md)
+Checks run on Node 22 and 24. Qualifying pushes to `main` publish a public npm package with provenance and create a GitHub release with the same installable package attached. GitHub Actions authenticates to npm through a trusted publisher, without a stored npm token. `fix:` makes a patch release, `feat:` makes a minor release, and a breaking change makes a major release. Documentation-only changes do not bump the version. [Release details →](docs/releases.md)
 
 [MIT](LICENSE) · Made by [Ryan Yannelli](https://ryanyannelli.com). Questions or feedback? [Open an issue](https://github.com/yannelli/paseo-usage-plugin/issues).

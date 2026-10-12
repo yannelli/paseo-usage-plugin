@@ -1,5 +1,5 @@
 {
-  "name": "paseo-usage-plugin",
+  "name": "@yannelli/paseo-usage-plugin",
   "description": "Kiro CLI and Antigravity account usage sources for Paseo",
   "license": "MIT",
   "author": "Ryan Yannelli",
@@ -18,6 +18,11 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yannelli/paseo-usage-plugin.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true,
+    "registry": "https://registry.npmjs.org"
   },
   "files": [
     "paseo-plugin.json",

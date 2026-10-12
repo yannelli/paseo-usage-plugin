@@ -1,0 +1,10 @@
+{
+  "id": "paseo-usage-plugin",
+  "name": "Paseo Usage Plugin",
+  "description": "Show Kiro CLI credits and Antigravity model quotas in Paseo Usage.",
+  "icon": "assets/icon.png",
+  "media": ["docs/images/github-banner.png", "docs/images/quota-preview.png"],
+  "requirements": {
+    "paseo": ">=0.11.2"
+  }
+}

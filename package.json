@@ -1,0 +1,43 @@
+{
+  "name": "paseo-usage-plugin",
+  "description": "Kiro CLI and Antigravity account usage sources for Paseo",
+  "license": "MIT",
+  "author": "Ryan Yannelli",
+  "keywords": ["paseo", "paseo-plugin", "kiro", "antigravity", "usage", "quota"],
+  "bugs": "https://github.com/yannelli/paseo-usage-plugin/issues",
+  "homepage": "https://github.com/yannelli/paseo-usage-plugin#readme",
+  "version": "0.1.0",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yannelli/paseo-usage-plugin.git"
+  },
+  "files": [
+    "paseo-plugin.json",
+    "OVERVIEW.md",
+    "index.server.ts",
+    "server/",
+    "assets/",
+    "docs/*.md",
+    "docs/images/"
+  ],
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test test/*.test.ts test/*.test.mjs",
+    "check": "npm run typecheck && npm test",
+    "check:live": "node --import tsx scripts/check-live.ts",
+    "graphics": "node docs/graphics/render.mjs",
+    "release:dry-run": "node scripts/release.mjs --dry-run"
+  },
+  "devDependencies": {
+    "@getpaseo/plugin": "0.11.2",
+    "@types/node": "^24.0.0",
+    "playwright": "1.64.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.3",
+    "zod": "^4.4.3"
+  }
+}

@@ -13,7 +13,7 @@
   ],
   "bugs": "https://github.com/yannelli/paseo-usage-plugin/issues",
   "homepage": "https://github.com/yannelli/paseo-usage-plugin#readme",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "type": "module",
   "repository": {
     "type": "git",

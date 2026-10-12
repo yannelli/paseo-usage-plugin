@@ -1,15 +1,32 @@
 import assert from "node:assert/strict";
 import { execFile, execFileSync } from "node:child_process";
-import { mkdtemp, rm, writeFile } from "node:fs/promises";
+import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
 import test from "node:test";
-import { alreadyPublished } from "../scripts/publish-npm.mjs";
+import { alreadyPublished, parsePackResult } from "../scripts/publish-npm.mjs";
 
 const pkg = { name: "@yannelli/paseo-usage-plugin", version: "0.2.0", integrity: "sha512-example" };
 const metadata = { name: pkg.name, version: pkg.version, dist: { integrity: pkg.integrity } };
+
+test("publisher understands actual npm pack output and includes the installable plugin", async () => {
+  const cwd = fileURLToPath(new URL("..", import.meta.url));
+  const manifest = JSON.parse(await readFile(join(cwd, "package.json"), "utf8"));
+  const output = execFileSync("npm", ["pack", "--dry-run", "--json"], { cwd, encoding: "utf8" });
+  const packed = parsePackResult(output, manifest);
+  const files = packed.files.map(({ path }) => path);
+  for (const path of ["paseo-plugin.json", "index.server.ts", "server/kiro.ts", "server/antigravity.ts", "assets/icon.png"]) {
+    assert.ok(files.includes(path), `Missing plugin file: ${path}`);
+  }
+  assert.ok(files.every((path) => !/^(?:node_modules|test|scripts|\.github|docs\/graphics)\//.test(path)));
+  // Support both npm output formats on Node 22 and Node 24 CI runners.
+  assert.deepEqual(parsePackResult(JSON.stringify([packed]), manifest), packed);
+  assert.deepEqual(parsePackResult(JSON.stringify({ [manifest.name]: packed }), manifest), packed);
+  assert.throws(() => parsePackResult(JSON.stringify({}), manifest), /Unexpected npm pack output/);
+  assert.throws(() => parsePackResult(JSON.stringify([{ ...packed, version: "9.9.9" }]), manifest), /Unexpected npm pack output/);
+});
 
 test("npm publication skips only the same version with matching package contents", async () => {
   assert.equal(await alreadyPublished(pkg, async (url, options) => {

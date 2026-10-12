@@ -5,6 +5,17 @@ import { verifyConditions } from "./release-manifests.mjs";
 
 const registry = "https://registry.npmjs.org";
 
+export function parsePackResult(output, pkg) {
+  const result = JSON.parse(output);
+  // npm 12 keys results by package name; earlier versions return an array.
+  const packed = Array.isArray(result) ? result[0] : result?.[pkg.name];
+  if (packed?.name !== pkg.name || packed.version !== pkg.version ||
+      !/^yannelli-paseo-usage-plugin-\d+\.\d+\.\d+\.tgz$/.test(packed.filename) || !packed.integrity) {
+    throw new Error("Unexpected npm pack output");
+  }
+  return packed;
+}
+
 export async function alreadyPublished(pkg, request = fetch) {
   const url = `${registry}/${encodeURIComponent(pkg.name)}/${encodeURIComponent(pkg.version)}`;
   const response = await request(url, { signal: AbortSignal.timeout(20_000) });
@@ -31,11 +42,7 @@ export async function publishNpm() {
   if (git("rev-parse", "HEAD") !== git("rev-parse", `v${version}^{commit}`)) {
     throw new Error("npm publication requires the exact release tag");
   }
-  const [packed] = JSON.parse(execFileSync("npm", ["pack", "--json"], { encoding: "utf8" }));
-  if (packed.name !== pkg.name || packed.version !== version ||
-      !/^yannelli-paseo-usage-plugin-\d+\.\d+\.\d+\.tgz$/.test(packed.filename) || !packed.integrity) {
-    throw new Error("Unexpected npm pack output");
-  }
+  const packed = parsePackResult(execFileSync("npm", ["pack", "--json"], { encoding: "utf8" }), pkg);
   if (await alreadyPublished(packed)) {
     console.log(`${pkg.name}@${version} already exists with matching contents`);
   } else {

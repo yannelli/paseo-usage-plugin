@@ -81,7 +81,7 @@ export function createAntigravityUsageSource(options: { env?: Environment; fetch
   const fetcher = options.fetch ?? fetch;
   const now = options.now ?? Date.now;
   return {
-    id: "antigravity", label: "Antigravity", input: storeInput,
+    id: "antigravity", label: "Antigravity", icon: "assets/providers/antigravity.svg", input: storeInput,
     async discover(scope) {
       if (scope.kind === "session" && !["antigravity", "agy"].includes(scope.provider)) return [];
       const env = environment(scope, globalEnv);

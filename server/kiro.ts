@@ -109,7 +109,7 @@ export function createKiroUsageSource(options: { env?: Environment; fetch?: Fetc
   const fetcher = options.fetch ?? fetch;
   const now = options.now ?? Date.now;
   return {
-    id: "kiro", label: "Kiro CLI", input: storeInput,
+    id: "kiro", label: "Kiro CLI", icon: "assets/providers/kiro.svg", input: storeInput,
     async discover(scope) {
       if (scope.kind === "session" && !["kiro", "kiro-cli"].includes(scope.provider)) return [];
       const env = environment(scope, globalEnv);

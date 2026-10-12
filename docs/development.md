@@ -38,6 +38,8 @@ The npm package name is `@yannelli/paseo-usage-plugin`; the Paseo manifest ID is
 
 The graphics are original HTML/CSS illustrations, inspired by the charcoal, cream, and orange presentation of [Be Concise for Paseo](https://github.com/yannelli/paseo-plugin-concise). They use invented sample values, with no real account names, credentials, or screenshots of private sessions.
 
+Provider logos come from the official ACP registry (Antigravity) and Kiro's website. The usage source registrations and illustrated cards use the same bundled SVGs in `assets/providers/`. See their [sources and attribution](../assets/providers/README.md).
+
 ```sh
 npx playwright install chromium
 npm run graphics
@@ -52,6 +54,6 @@ The renderer checks fonts, image loading, card bounds, dimensions, and a 700 KB 
 | `docs/images/social-preview.png` | 1280 × 640 | GitHub social preview upload |
 | `assets/icon.png` | 512 × 512 | Plugin catalog icon |
 
-Edit `docs/graphics/banner.html` and `assets/icon.svg`, then regenerate and inspect the resulting images before committing. Fonts are bundled under the [SIL Open Font License](graphics/fonts/OFL.txt); the rest of the project uses MIT.
+Edit `docs/graphics/banner.html` and `assets/icon.svg`, then regenerate and inspect the resulting images before committing. Fonts are bundled under the [SIL Open Font License](graphics/fonts/OFL.txt); provider logos retain their upstream terms as described above. Original project code and graphics use MIT.
 
 GitHub's custom social preview is uploaded through the repository's Settings page. The ready-to-upload file is included above; it is separate from the README banner and Paseo plugin media.
